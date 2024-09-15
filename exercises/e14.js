@@ -5,9 +5,38 @@
 // Array example: bankAccounts in /data/data.js
 // getClientsWithWrongBalance(bankAccounts) => [{ name: 'Name1', balance: 32, ... }, { name: 'Name2', balance: 3523, ... }]
 
-export function getClientsWithWrongBalance(array) {
-  // Your code goes here...
+import { bankAccounts } from "../data/data";
 
+export function getClientsWithWrongBalance(bankAccounts) {
+  // Your code goes here...
+  let wrongBalance = [];
+
+  for (let i = 0; i < bankAccounts.length; i++) {
+    
+    let account = bankAccounts[i];
+    let withdrawalSum = 0;
+    let depositSum = 0;
+
+    if (account.deposits) { 
+      for (let x = 0; x < account.deposits.length; x++) {
+      depositSum += account.deposits[x];
+      }
+    }
+
+    if (account.withdrawals) {
+      for (let z = 0; z < account.withdrawals.length; z++) {
+        withdrawalSum += account.withdrawals[z];
+        }
+    }
+
+    let actualBalance = depositSum - withdrawalSum;
+
+    if (account.balance !== actualBalance) {
+      wrongBalance.push(account);
+    }
+  }
+
+  return wrongBalance;
 }
 
 

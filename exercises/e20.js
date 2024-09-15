@@ -7,8 +7,29 @@
 
 export function separateNamesWithAFromRest(array) {
   // Your code goes here...
-
+    let hasA = [];
+    let noA = [];
+    
+    for (let i = 0; i < array.length; i++) {
+        let containsA = false;
+        
+        for (let j = 0; j < array[i].length; j++) {
+            if (array[i][j].toLowerCase() === 'a') {
+                containsA = true;
+                break; // Exit the loop once we find 'a'
+            }
+        }
+        
+        if (containsA) {
+            hasA.push(array[i]);
+        } else {
+            noA.push(array[i]);
+        }
+    }
+    
+    return [hasA, noA];
 }
+
 
 
 // === TEST YOURSELF ===

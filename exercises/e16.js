@@ -8,6 +8,18 @@
 export function flatArrays(array) {
   // Your code goes here...
 
+  let realArray = [];
+
+  for (let i = 0; i < array.length; i++) {
+    let subArray = array[i];
+
+    for (let x = 0; x < subArray.length; x++){
+      realArray.push(subArray[x]);    
+    }
+  }
+
+  return realArray;
+
 }
 
 
